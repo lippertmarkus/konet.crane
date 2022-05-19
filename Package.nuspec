@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>konet.crane</id>
+    <version>0.0.1</version>
+    <authors>lippertmarkus</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <icon>images\logo.png</icon>
+    <projectUrl>https://github.com/lippertmarkus/konet.crane</projectUrl>
+    <repository type="git" url="https://github.com/lippertmarkus/konet.crane.git" branch="main" />
+    <description>C library to use crane from .NET</description>
+    <releaseNotes>Initial release</releaseNotes>
+    <readme>docs\README.md</readme>
+    <tags>crane konet library</tags>
+    <dependencies>
+      <group targetFramework="netstandard2.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="images\logo.png" target="images\" />
+    <file src="README.md" target="docs\" />
+
+    <file src="crane.dll" target="runtimes\win-x64\native" />
+    <file src="crane.dll.so" target="runtimes\linux-x64\native" />
+  </files>
+</package>
