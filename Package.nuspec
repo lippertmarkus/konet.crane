@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>konet.crane</id>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <authors>lippertmarkus</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>

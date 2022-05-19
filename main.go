@@ -86,6 +86,8 @@ func CreateManifestList(target *C.char, manifestList *C.char) *C.char {
 	ch := make(chan mutate.IndexAddendum, len(manifests))
 	errs := errgroup.Group{}
 
+	opts := crane.GetOptions([]crane.Option{}...)
+
 	for _, m := range manifests {
 		manifest := m
 		errs.Go(func() error {
@@ -94,7 +96,7 @@ func CreateManifestList(target *C.char, manifestList *C.char) *C.char {
 				return errors.Wrapf(err, "failed to parse manifest tag %s", manifest)
 			}
 
-			manifestToAdd, err := remote.Image(sourceManifestTag)
+			manifestToAdd, err := remote.Image(sourceManifestTag, opts.Remote...)
 			if err != nil {
 				return errors.Wrapf(err, "failed to access remote image %s", manifest)
 			}
@@ -136,7 +138,6 @@ func CreateManifestList(target *C.char, manifestList *C.char) *C.char {
 
 	targetManifest = mutate.AppendManifests(targetManifest, addendums...)
 
-	opts := crane.GetOptions([]crane.Option{}...)
 	if err := remote.WriteIndex(targetRef, targetManifest, opts.Remote...); err != nil {
 		return errorAsCString(errors.Wrapf(err, "failed to write manifest list"))
 	}
