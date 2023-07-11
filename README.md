@@ -8,10 +8,10 @@ which can be used by [konet](https://github.com/lippertmarkus/konet).
 ## Compile on Linux 
 
 ```bash
-# Compile Windows DLL
+# Windows DLL
 GOOS=windows GOARCH=amd64 CGO_ENABLED=1 CC=x86_64-w64-mingw32-gcc go build -buildmode=c-shared -o crane.dll main.go
 
-# Compile Linux lib
+# Linux lib
 go build -buildmode=c-shared -o crane.dll.so main.go
 ```
 
